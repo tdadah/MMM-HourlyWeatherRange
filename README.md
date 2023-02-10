@@ -21,6 +21,8 @@ To use this module, add the following configuration block to the modules array i
   position: "top_right",
   header: "Hourly Forecast",
   config: {
+    hourStart: 5,
+    maxEntries: 2,
     weatherProvider: "weathergov",
     apiBase: "https://api.weather.gov/gridpoints/OKX/28,70/",
     weatherEndoint: "forecast/hourly",

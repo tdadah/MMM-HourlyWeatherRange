@@ -25,7 +25,7 @@ Module.register("MMM-HourlyWeatherRange", {
     degreeLabel: false,
     decimalSymbol: ".",
     maxNumberOfDays: 5,
-    maxEntries: 2,
+    maxEntries: 5,
     fade: true,
     fadePoint: 0.25, // Start on 1/4th of the list.
     initialLoadDelay: 0, // 0 seconds delay
