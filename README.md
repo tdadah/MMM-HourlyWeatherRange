@@ -35,3 +35,5 @@ To use this module, add the following configuration block to the modules array i
 ### Configuration Options
 
 Most configurations for the global Weather module that are specific to the hourly forecast will work for this module.
+
+One new config is required, `hourStart`. It needs to be in a 24 hour format, so if you wanted the forecast to start at 5 PM, you would set it to 17.

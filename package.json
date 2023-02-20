@@ -1,0 +1,36 @@
+{
+	"name": "MMM-HourlyWeatherRange",
+	"version": "0.0.1",
+	"description": "A MagicMirror extension to display a specific hourly forecast range. This module is a modification of the default hourly weather module that will start at a given time.",
+	"main": "MMM-HourlyWeatherRange.js",
+	"scripts": {
+		"test": "npm run test:unit && npm run test:prettier && npm run test:js",
+		"test:unit": "NODE_ENV=test mocha tests --recursive",
+		"test:prettier": "prettier --check **/*.{js,css,json,md,yml}",
+		"test:js": "eslint *.js tests/**/*.js --config .eslintrc.json",
+		"lint:prettier": "prettier --write **/*.{js,css,json,md,yml}",
+		"lint:js": "eslint *.js tests/**/*.js --config .eslintrc.json --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tdadah/MMM-HourlyWeatherRange.git"
+	},
+	"keywords": [
+		"MagicMirror",
+		"Module",
+		"HourlyWeatherRange"
+	],
+	"author": "Tara Dadah",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tdadah/MMM-HourlyWeatherRange/issues"
+	},
+	"homepage": "https://github.com/tdadah/MMM-HourlyWeatherRange#readme",
+	"devDependencies": {
+		"eslint-config-prettier": "^8.1.0",
+		"prettier": "^2.2.1"
+	},
+	"dependencies": {
+		"cron": "^1.8.2"
+	}
+}

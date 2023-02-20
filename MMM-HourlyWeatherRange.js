@@ -5,14 +5,20 @@
  *
  * By Tara Dadah https://tarad.dev
  * MIT Licensed.
+ *
+ * Based mostly on the default MagicMirror weather module.
+ * https://github.com/MichMich/MagicMirror/blob/master/modules/default/weather/weather.js
+ * https://github.com/MichMich/MagicMirror/blob/master/modules/default/weather/hourly.njk
  */
+
 Module.register("MMM-HourlyWeatherRange", {
   // Default module config.
   defaults: {
     hourStart: 7,
+    displayStart: 17,
+    displayEnd: 0,
     weatherProvider: "weathergov",
     roundTemp: false,
-    type: "hourly",
     units: config.units,
     tempUnits: config.units,
     windUnits: config.units,
@@ -71,6 +77,10 @@ Module.register("MMM-HourlyWeatherRange", {
       this
     );
 
+    this.sendSocketNotification("SHOW_HIDE", {
+      config: this.config
+    });
+
     // Let the weather provider know we are starting.
     this.weatherProvider.start();
 
@@ -79,6 +89,21 @@ Module.register("MMM-HourlyWeatherRange", {
 
     // Schedule the first update.
     this.scheduleUpdate(this.config.initialLoadDelay);
+  },
+
+  socketNotificationReceived: function (notification, payload) {
+    const currentHour = moment().hour();
+    if (
+      this.config.displayStart >= currentHour &&
+      this.config.displayEnd < currentHour &&
+      !this.hidden
+    ) {
+      Log.log("Hide " + this.name);
+      this.hide();
+    } else if (this.hidden) {
+      Log.log("Show " + this.name);
+      this.show();
+    }
   },
 
   // Select the template depending on the display type.
